@@ -24,6 +24,7 @@ export default class Niche extends Component{
             <TabBarIOS selectionTab = {this.state.selectedTab}>
 
                 <TabBarIOS.Item
+                title = "Home"
                 selected = {this.state.selectedTab === 'Home'}
                 icon = {require('./assets/home.png')}
                 onPress={()=>{
@@ -36,6 +37,7 @@ export default class Niche extends Component{
                 </TabBarIOS.Item>
 
                 <TabBarIOS.Item
+                title = "Add"
                 selected = {this.state.selectedTab === 'Add'}
                 icon = {require('./assets/add.png')}
                 onPress = {()=>{
