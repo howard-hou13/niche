@@ -6,9 +6,16 @@
 import {StyleSheet} from 'react-native';
 
 var Style = StyleSheet.create({
-    container:{
-        backgroundColor: '#828486',
+    rootContainer:{
+        backgroundColor: '#4682b4',
         flex:1,
+    },
+
+    inputContainer:{
+        marginTop: 50,
+        marginBottom: 50,
+        marginLeft: 50,
+        marginRight: 50
     }
 });
 
