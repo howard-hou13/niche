@@ -8,7 +8,8 @@
      View,
      Text,
      TextInput,
-     DatePickerIOS
+     DatePickerIOS,
+     Button
  } from 'react-native';
  import Style from './AddStyle';
 
@@ -45,6 +46,13 @@
                       timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
                       onDateChange={this.onDateChange}
                     />
+
+                    <Button
+                    onPress = {this.onButtonPress}
+                    title = "Add"
+                    color = "#841584"
+                    accessibilityLabel="Add Event To notifications"/>
+
                 </View>
              </View>
          );
@@ -54,5 +62,9 @@
          this.setState({
              date: date
          });
+     }
+
+     onButtonPress = () =>{
+         alert("Added");
      }
  }
