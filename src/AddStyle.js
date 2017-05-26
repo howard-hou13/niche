@@ -7,7 +7,6 @@ import {StyleSheet} from 'react-native';
 
 var Style = StyleSheet.create({
     rootContainer:{
-        backgroundColor: '#4682b4',
         flex:1,
     },
 
@@ -16,6 +15,12 @@ var Style = StyleSheet.create({
         marginBottom: 50,
         marginLeft: 50,
         marginRight: 50
+    },
+
+    inputPrompt:{
+        fontSize: 30,
+        marginTop: 50,
+        marginBottom: 50
     }
 });
 

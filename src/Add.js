@@ -25,7 +25,10 @@
          return(
              <View style = {Style.rootContainer}>
                 <View style = {Style.inputContainer}>
-                    <Text>Name of notification</Text>
+                    <Text style = {Style.inputPrompt}>
+                        Name of notification
+                    </Text>
+
                     <TextInput
                     style={{height: 40, borderColor: 'black', borderWidth: 1,
                     padding: 10}}
@@ -33,7 +36,9 @@
                     value={this.state.name}
                     />
 
-                    <Text> Date and Time </Text>
+                    <Text style = {Style.inputPrompt}>
+                        Date and Time
+                    </Text>
                     <DatePickerIOS
                       date={this.state.date}
                       mode="datetime"
