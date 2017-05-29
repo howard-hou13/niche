@@ -11,16 +11,13 @@ var Style = StyleSheet.create({
     },
 
     inputContainer:{
-        marginTop: 50,
-        marginBottom: 50,
         marginLeft: 50,
         marginRight: 50
     },
 
     inputPrompt:{
-        fontSize: 30,
-        marginTop: 50,
-        marginBottom: 50
+        fontSize: 20,
+        marginTop: 50
     }
 });
 

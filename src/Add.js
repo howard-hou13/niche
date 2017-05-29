@@ -19,7 +19,8 @@
          this.state = {
              name: "",
              date: new Date(),
-             timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60
+             timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
+             note: ""
          };
      }
      render(){
@@ -34,8 +35,7 @@
                     style={{height: 40, borderColor: 'black', borderWidth: 1,
                     padding: 10}}
                     onChangeText={(name) => this.setState({name})}
-                    value={this.state.name}
-                    />
+                    value={this.state.name}/>
 
                     <Text style = {Style.inputPrompt}>
                         Date and Time
@@ -47,10 +47,17 @@
                       onDateChange={this.onDateChange}
                     />
 
+                    <Text style = {Style.inputPrompt}>Notes</Text>
+                    <TextInput
+                    style = {{height: 120, borderColor: 'black', borderWidth: 1,
+                    padding: 10}}
+                    onChangeText = {(note) => this.setState({note})}
+                    value = {this.state.note}/>
+
                     <Button
                     onPress = {this.onButtonPress}
-                    title = "Add"
-                    color = "#841584"
+                    title = "Add Notification"
+                    color = '#4682b4'
                     accessibilityLabel="Add Event To notifications"/>
 
                 </View>
@@ -65,6 +72,8 @@
      }
 
      onButtonPress = () =>{
-         alert("Added");
+         if (this.state.name === ""){
+             alert("Please enter a name for the notification");
+         }
      }
  }
