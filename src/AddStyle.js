@@ -7,17 +7,22 @@ import {StyleSheet} from 'react-native';
 
 var Style = StyleSheet.create({
     rootContainer:{
-        flex:1,
+        backgroundColor: 'white',
+        flex:1
     },
 
     inputContainer:{
         marginLeft: 50,
-        marginRight: 50
+        marginRight: 50,
+
     },
 
     inputPrompt:{
-        fontSize: 20,
-        marginTop: 50
+        fontSize: 20
+    },
+
+    field:{
+        paddingTop: 30
     }
 });
 

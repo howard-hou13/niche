@@ -11,6 +11,7 @@
      DatePickerIOS,
      Button
  } from 'react-native';
+ import { RadioButtons } from 'react-native-radio-buttons'
  import Style from './AddStyle';
 
  export default class Add extends Component{
@@ -20,46 +21,65 @@
              name: "",
              date: new Date(),
              timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
-             note: ""
+             note: "",
+             setSelectedOption: "High"
          };
      }
      render(){
+         const priorityLevels = [
+             "High",
+             "Medium",
+             "Low"
+         ];
          return(
              <View style = {Style.rootContainer}>
                 <View style = {Style.inputContainer}>
-                    <Text style = {Style.inputPrompt}>
-                        Name of notification
-                    </Text>
 
-                    <TextInput
-                    style={{height: 40, borderColor: 'black', borderWidth: 1,
-                    padding: 10}}
-                    onChangeText={(name) => this.setState({name})}
-                    value={this.state.name}/>
+                    <View style = {Style.field}>
+                        <Text>
+                            Name of Notification
+                        </Text>
+                        <TextInput
+                        style={{height: 40, borderColor: 'black', borderWidth: 1,
+                        padding: 10}}
+                        onChangeText={(name) => this.setState({name})}
+                        value={this.state.name}/>
+                    </View>
 
-                    <Text style = {Style.inputPrompt}>
-                        Date and Time
-                    </Text>
-                    <DatePickerIOS
-                      date={this.state.date}
-                      mode="datetime"
-                      timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
-                      onDateChange={this.onDateChange}
-                    />
+                    <View style = {Style.field}>
+                        <Text style = {Style.inputPrompt}>
+                            Date and Time
+                        </Text>
+                        <DatePickerIOS
+                          date={this.state.date}
+                          mode="datetime"
+                          timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
+                          onDateChange={this.onDateChange}
+                        />
+                    </View>
 
-                    <Text style = {Style.inputPrompt}>Notes</Text>
-                    <TextInput
-                    style = {{height: 120, borderColor: 'black', borderWidth: 1,
-                    padding: 10}}
-                    onChangeText = {(note) => this.setState({note})}
-                    value = {this.state.note}/>
+                    <View style = {Style.field}>
+                        <Text>
+                            Notes
+                        </Text>
+                        <TextInput
+                        style = {{height: 120, borderColor: 'black', borderWidth: 1,
+                        padding: 10}}
+                        onChangeText = {(note) => this.setState({note})}
+                        value = {this.state.note}
+                        multiline = {true}
+                        keyboardType = 'default'
+                        returnKeyType = 'done'
+                        />
+                    </View>
 
-                    <Button
-                    onPress = {this.onButtonPress}
-                    title = "Add Notification"
-                    color = '#4682b4'
-                    accessibilityLabel="Add Event To notifications"/>
-
+                    <View style = { Style.field}>
+                        <Button
+                        onPress = {this.onAddPress}
+                        title = "Add Notification"
+                        color = '#4682b4'
+                        accessibilityLabel="Add Event To notifications"/>
+                    </View>
                 </View>
              </View>
          );
@@ -71,7 +91,13 @@
          });
      }
 
-     onButtonPress = () =>{
+     onPriorityPress = (priorityLevel) =>{
+         this.setState({
+             priorityLevel: priorityLevel
+         });
+     }
+
+     onAddPress = () =>{
          if (this.state.name === ""){
              alert("Please enter a name for the notification");
          }
