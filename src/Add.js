@@ -22,7 +22,6 @@
              date: new Date(),
              timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
              note: "",
-             setSelectedOption: "High"
          };
      }
      render(){
@@ -88,12 +87,6 @@
      onDateChange = (date) => {
          this.setState({
              date: date
-         });
-     }
-
-     onPriorityPress = (priorityLevel) =>{
-         this.setState({
-             priorityLevel: priorityLevel
          });
      }
 
