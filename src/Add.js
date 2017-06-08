@@ -33,7 +33,9 @@
                     <Text style = {Style.headerItem}>New Notification</Text>
                 </View>
 
-                 <ScrollView automaticallyAdjustContentInsets={false}>
+                 <ScrollView
+                 automaticallyAdjustContentInsets={false}
+                 contentInset={{bottom:130}}>
                      <View style = {Style.rootContainer}>
                         <View style = {Style.inputContainer}>
 
