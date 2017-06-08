@@ -9,7 +9,8 @@ var Style = StyleSheet.create({
     rootContainer:{
         backgroundColor: '#0abab5',
         flex:1,
-        paddingBottom: 10
+        paddingBottom: 10,
+        paddingTop: 10
     },
 
     inputContainer:{

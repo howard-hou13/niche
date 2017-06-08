@@ -32,7 +32,7 @@
                     <Text style = {Style.headerItem}>New Notification</Text>
                 </View>
 
-                 <ScrollView>
+                 <ScrollView automaticallyAdjustContentInsets={false}>
                      <View style = {Style.rootContainer}>
                         <View style = {Style.inputContainer}>
 
