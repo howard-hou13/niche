@@ -9,7 +9,8 @@
      Text,
      TextInput,
      DatePickerIOS,
-     Button
+     Button,
+     ScrollView
  } from 'react-native';
  import { RadioButtons } from 'react-native-radio-buttons'
  import Style from './AddStyle';
@@ -25,61 +26,64 @@
          };
      }
      render(){
-         const priorityLevels = [
-             "High",
-             "Medium",
-             "Low"
-         ];
          return(
-             <View style = {Style.rootContainer}>
-                <View style = {Style.inputContainer}>
-
-                    <View style = {Style.field}>
-                        <Text>
-                            Name of Notification
-                        </Text>
-                        <TextInput
-                        style={{height: 40, borderColor: 'black', borderWidth: 1,
-                        padding: 10}}
-                        onChangeText={(name) => this.setState({name})}
-                        value={this.state.name}/>
-                    </View>
-
-                    <View style = {Style.field}>
-                        <Text style = {Style.inputPrompt}>
-                            Date and Time
-                        </Text>
-                        <DatePickerIOS
-                          date={this.state.date}
-                          mode="datetime"
-                          timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
-                          onDateChange={this.onDateChange}
-                        />
-                    </View>
-
-                    <View style = {Style.field}>
-                        <Text>
-                            Notes
-                        </Text>
-                        <TextInput
-                        style = {{height: 120, borderColor: 'black', borderWidth: 1,
-                        padding: 10}}
-                        onChangeText = {(note) => this.setState({note})}
-                        value = {this.state.note}
-                        multiline = {true}
-                        keyboardType = 'default'
-                        returnKeyType = 'done'
-                        />
-                    </View>
-
-                    <View style = { Style.field}>
-                        <Button
-                        onPress = {this.onAddPress}
-                        title = "Add Notification"
-                        color = '#4682b4'
-                        accessibilityLabel="Add Event To notifications"/>
-                    </View>
+             <View>
+                <View style = {Style.header}>
+                    <Text style = {Style.headerItem}>New Notification</Text>
                 </View>
+
+                 <ScrollView>
+                     <View style = {Style.rootContainer}>
+                        <View style = {Style.inputContainer}>
+
+                            <View style = {Style.field}>
+                                <Text style = { Style.inputPrompt }>
+                                    Name of Notification
+                                </Text>
+                                <TextInput
+                                style={{height: 40, borderColor: 'white', borderWidth: 1,
+                                padding: 10}}
+                                onChangeText={(name) => this.setState({name})}
+                                value={this.state.name}/>
+                            </View>
+
+                            <View style = {Style.field}>
+                                <Text style = { Style.inputPrompt }>
+                                    Date and Time
+                                </Text>
+                                <DatePickerIOS
+                                  date={this.state.date}
+                                  mode="datetime"
+                                  timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
+                                  onDateChange={this.onDateChange}
+                                />
+                            </View>
+
+                            <View style = {Style.field}>
+                                <Text style = { Style.inputPrompt }>
+                                    Notes
+                                </Text>
+                                <TextInput
+                                style = {{height: 120, borderColor: 'white', borderWidth: 1,
+                                padding: 10}}
+                                onChangeText = {(note) => this.setState({note})}
+                                value = {this.state.note}
+                                multiline = {true}
+                                keyboardType = 'default'
+                                returnKeyType = 'done'
+                                />
+                            </View>
+
+                            <View style = { Style.field}>
+                                <Button
+                                onPress = {this.onAddPress}
+                                title = "Add Notification"
+                                color = '#0abab5'
+                                accessibilityLabel="Add Event To notifications"/>
+                            </View>
+                        </View>
+                     </View>
+                 </ScrollView>
              </View>
          );
      }
