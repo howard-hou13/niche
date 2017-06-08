@@ -34,7 +34,7 @@
 
                  <ScrollView
                  automaticallyAdjustContentInsets={false}
-                 contentInset={{bottom:135}}>
+                 contentInset={{bottom:130}}>
                      <View style = {Style.rootContainer}>
                         <View style = {Style.inputContainer}>
 
