@@ -14,6 +14,7 @@
  } from 'react-native';
  import { RadioButtons } from 'react-native-radio-buttons'
  import Style from './AddStyle';
+ import realm from './NotiModel';
 
  export default class Add extends Component{
      constructor(props){
@@ -95,8 +96,13 @@
      }
 
      onAddPress = () =>{
-         if (this.state.name === ""){
+         if (this.state.name === "") {
              alert("Please enter a name for the notification");
+         }
+         else {
+             realm.write(() => {
+                 let noti = realm.create('Noti', {title: this.state.name, message: this.state.note, date: this.state.date});
+             })
          }
      }
  }
