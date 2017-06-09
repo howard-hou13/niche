@@ -5,12 +5,13 @@ class Noti {}
 Noti.schema = {
     name: 'Noti',
     properties: {
-        title: {type: 'string', optional: true},
+        title: {type: 'string', optional: false},
         message: {type: 'string', optional: true},
         date: 'date'
     }
 };
 
-let realm = new Realm({schema: [Noti]});
-
+let realm = new Realm({
+    schema: [Noti]
+});
 module.exports = realm;

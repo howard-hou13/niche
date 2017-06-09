@@ -36,7 +36,7 @@ var Style = StyleSheet.create({
         backgroundColor: '#EBD038',
         paddingTop: 30,
         paddingBottom: 30,
-        paddingLeft: 10
+        paddingLeft: 30
     },
 
     headerItem:{

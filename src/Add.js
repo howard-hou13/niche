@@ -47,7 +47,8 @@
                                 style={{height: 40, borderColor: 'white', borderWidth: 1,
                                 padding: 10}}
                                 onChangeText={(name) => this.setState({name})}
-                                value={this.state.name}/>
+                                value={this.state.name}
+                                />
                             </View>
 
                             <View style = {Style.field}>
@@ -105,6 +106,7 @@
              realm.write(() => {
                  let noti = realm.create('Noti', {title: this.state.name, message: this.state.note, date: this.state.date});
              })
+             alert('it worked!');
          }
      }
  }
