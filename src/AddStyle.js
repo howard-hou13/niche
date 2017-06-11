@@ -42,7 +42,9 @@ var Style = StyleSheet.create({
     headerItem:{
         fontSize: 20,
         color: 'white',
-        alignItems: 'center'
+        alignItems: 'center',
+        fontWeight: 'bold'
+
     }
 
 });
