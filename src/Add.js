@@ -104,7 +104,7 @@
          }
          else {
              realm.write(() => {
-                 let noti = realm.create(this.state.name, {message: this.state.note, date: this.state.date});
+                 let noti = realm.create('Noti', {title: this.state.name, message: this.state.note, date: this.state.date});
              })
              alert('it worked!');
          }
