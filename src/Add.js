@@ -28,6 +28,10 @@
      }
      render(){
          return(
+             // The first view contains the header and the scroll View
+             // The first inner view contains the header and is orange
+             // the second inner view contains the scroll view and is
+             // tiffany blue
              <View>
                 <View style = {Style.header}>
                     <Text style = {Style.headerItem}>New Notification</Text>

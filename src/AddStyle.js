@@ -44,7 +44,6 @@ var Style = StyleSheet.create({
         color: 'white',
         alignItems: 'center',
         fontWeight: 'bold'
-
     }
 
 });
