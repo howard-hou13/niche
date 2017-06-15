@@ -30,6 +30,7 @@ var Style = StyleSheet.create({
     notiContainer:{
         marginLeft: 50,
         marginRight: 50,
+        flexDirection:'column'
 
     },
 
@@ -47,7 +48,7 @@ var Style = StyleSheet.create({
     },
 
     tileText:{
-        fontSize: 30,
+        fontSize: 10,
         color:'#0abab5'
     },
 

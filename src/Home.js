@@ -12,7 +12,6 @@
      TouchableHighlight
  } from 'react-native';
  import Style from './HomeStyle';
- import NotiTile from './NotiTile';
  import realm from './NotiModel';
  var Dimensions = require('Dimensions');
  var {
@@ -41,61 +40,34 @@
          );
      }
      _renderNotiTiles(){
-         /**
-         let notiTiles = [];
 
          let notiResults = realm.objects('Noti');
 
-         let rowCount = 0;
-         let rowList = []
-         for (noti in notiResults){
-             rowList.push(
-                 <Button
-                 onPress={alert("pressed")}
-                 title = "noti.properties.title"
-                 color = 'white'
-                 />
-             )
-
-             if (rowCount<=1){
-                 rowCount++;
-             }else{
-                 rowCount = 0;
-                 notiTiles.push(
-                     <View style = {Style.tileRow}>rowList</View>
-                 )
-                 rowList =[];
-             }
-         }
-
-         return notiTiles;
-         */
-
          let notiTiles = [];
-         notiTiles.push(
-             <View style = {Style.tileRow}>
-                 <TouchableHighlight
-                 style = {Style.notiTileTouchableHighlight}
-                 onPress = {alert('presssed')}>
-                    <View style={Style.notiTileView}>
-                        <Text style = {Style.tileText}>Add</Text>
-                        <Text style = {Style.tileText}>+</Text>
-                    </View>
-                </TouchableHighlight>
 
-                <TouchableHighlight
-                style = {Style.notiTileTouchableHighlight}
-                onPress = {alert('presssed')}>
-                    <View style={Style.notiTileView}>
-                        <Text style = {Style.tileText}>Add</Text>
-                        <Text style = {Style.tileText}>+</Text>
-                    </View>
-               </TouchableHighlight>
-            </View>
-        )
+         for (index = 0; index < notiResults.length; index+=2){
+             notiTiles.push(
+                 <View style = {Style.tileRow}>
+                    <TouchableHighlight
+                    style = {Style.notiTileTouchableHighlight}
+                    onPress = {alert('presssed')}>
+                       <View style={Style.notiTileView}>
+                           <Text style = {Style.tileText}>{notiResults[index].title}</Text>
+                           <Text style = {Style.tileText}>{notiResults[index].title}</Text>
+                       </View>
+                    </TouchableHighlight>
 
+                    <TouchableHighlight
+                    style = {Style.notiTileTouchableHighlight}
+                    onPress = {alert('presssed')}>
+                        <View style={Style.notiTileView}>
+                           <Text style = {Style.tileText}>{notiResults[index+1].title}</Text>
+                           <Text style = {Style.tileText}>{notiResults[index+1].title}</Text>
+                        </View>
+                    </TouchableHighlight>
+                  </View>
+              )
+        }
         return notiTiles;
-
-
      }
  }
