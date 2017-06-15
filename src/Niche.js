@@ -21,7 +21,8 @@ export default class Niche extends Component{
     render(){
         return(
             // These the tabs for the application.
-            <TabBarIOS selectionTab = {this.state.selectedTab}>
+            <TabBarIOS selectionTab = {this.state.selectedTab}
+            tintColor= '#0abab5'>
 
                 <TabBarIOS.Item
                 title = "Home"
