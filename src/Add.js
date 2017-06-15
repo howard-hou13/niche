@@ -98,7 +98,7 @@
 
      onDateChange = (date) => {
          this.setState({
-             date: date
+             date: date.string
          });
      }
 

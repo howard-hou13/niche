@@ -44,12 +44,14 @@ var Style = StyleSheet.create({
 
     tileRow:{
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginTop:5,
+        marginBottom: 5
     },
 
     tileText:{
-        fontSize: 10,
-        color:'#0abab5'
+        fontSize: 20,
+        color:'black'
     },
 
     notiTileView:{

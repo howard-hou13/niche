@@ -44,30 +44,50 @@
          let notiResults = realm.objects('Noti');
 
          let notiTiles = [];
+         let max=0;
+         if (notiResults.length%2===0){
+             max = notiResults.length
+         }else{
+             max = notiResults.lenght-1
+         }
+         for (index = 0; index < max; index+=2){
+             notiTiles.push(
+             <View style = {Style.tileRow}>
+                 <TouchableHighlight
+                 style = {Style.notiTileTouchableHighlight}
+                 onPress = {alert('a')}>
+                    <View style={Style.notiTileView}>
+                        <Text style = {Style.tileText}>{notiResults[index].title}</Text>
 
-         for (index = 0; index < notiResults.length; index+=2){
+                    </View>
+                 </TouchableHighlight>
+
+                 <TouchableHighlight
+                 style = {Style.notiTileTouchableHighlight}
+                 onPress = {alert('a')}>
+                    <View style={Style.notiTileView}>
+                        <Text style = {Style.tileText}>{notiResults[index++].title}</Text>
+
+                    </View>
+                 </TouchableHighlight>
+             </View>
+             )
+         }
+
+         if (max!=notiResults.lenght){
              notiTiles.push(
                  <View style = {Style.tileRow}>
-                    <TouchableHighlight
-                    style = {Style.notiTileTouchableHighlight}
-                    onPress = {alert('presssed')}>
-                       <View style={Style.notiTileView}>
-                           <Text style = {Style.tileText}>{notiResults[index].title}</Text>
-                           <Text style = {Style.tileText}>{notiResults[index].title}</Text>
-                       </View>
-                    </TouchableHighlight>
-
-                    <TouchableHighlight
-                    style = {Style.notiTileTouchableHighlight}
-                    onPress = {alert('presssed')}>
+                     <TouchableHighlight
+                     style = {Style.notiTileTouchableHighlight}
+                     onPress = {alert('a')}>
                         <View style={Style.notiTileView}>
-                           <Text style = {Style.tileText}>{notiResults[index+1].title}</Text>
-                           <Text style = {Style.tileText}>{notiResults[index+1].title}</Text>
+                            <Text style = {Style.tileText}>{notiResults[notiResults.length-1].title}</Text>
+
                         </View>
-                    </TouchableHighlight>
-                  </View>
-              )
-        }
-        return notiTiles;
+                     </TouchableHighlight>
+                 </View>
+             )
+         }
+         return notiTiles;
      }
  }
