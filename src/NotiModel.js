@@ -4,10 +4,12 @@ class Noti {}
 
 Noti.schema = {
     name: 'Noti',
+    primaryKey: 'serial',
     properties: {
         title: {type: 'string', optional: false},
         message: {type: 'string', optional: true},
-        date: 'date'
+        date: 'date',
+        serial: 'int'
     }
 };
 
