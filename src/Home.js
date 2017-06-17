@@ -48,9 +48,9 @@
          if (notiResults.length%2===0){
              max = notiResults.length
          }else{
-             max = notiResults.lenght-1
+             max = notiResults.length-1
          }
-         for (index = 0; index < max; index+=2){
+         for (index = 0; index < max; index++){
              notiTiles.push(
              <View style = {Style.tileRow}>
                  <TouchableHighlight
@@ -66,7 +66,7 @@
                  style = {Style.notiTileTouchableHighlight}
                  onPress = {alert('a')}>
                     <View style={Style.notiTileView}>
-                        <Text style = {Style.tileText}>{notiResults[index++].title}</Text>
+                        <Text style = {Style.tileText}>{notiResults[++index].title}</Text>
 
                     </View>
                  </TouchableHighlight>
@@ -74,7 +74,7 @@
              )
          }
 
-         if (max!=notiResults.lenght){
+         if (max!=notiResults.length){
              notiTiles.push(
                  <View style = {Style.tileRow}>
                      <TouchableHighlight
