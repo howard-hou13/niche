@@ -55,7 +55,7 @@
              <View style = {Style.tileRow}>
                  <TouchableHighlight
                  style = {Style.notiTileTouchableHighlight}
-                 onPress = {alert('a')}
+                 onPress = {()=>alert('a')}
                  key = {notiResults[index].serial}>
                     <View style={Style.notiTileView}>
                         <Text style = {Style.tileText}>{notiResults[index].title}</Text>
@@ -65,7 +65,7 @@
 
                  <TouchableHighlight
                  style = {Style.notiTileTouchableHighlight}
-                 onPress = {alert('a')}
+                 onPress = {()=>alert('a')}
                  key = {notiResults[++index].serial}>
                     <View style={Style.notiTileView}>
                         <Text style = {Style.tileText}>{notiResults[index].title}</Text>
@@ -81,7 +81,8 @@
                  <View style = {Style.tileRow}>
                      <TouchableHighlight
                      style = {Style.notiTileTouchableHighlight}
-                     onPress = {alert('a')}>
+                     onPress = {alert('a')}
+                     key = {notiResults[notiResults.length-1].serial}>
                         <View style={Style.notiTileView}>
                             <Text style = {Style.tileText}>{notiResults[notiResults.length-1].title}</Text>
 
