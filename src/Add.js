@@ -23,11 +23,15 @@
              name: "",
              date: new Date(),
              timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
-             note: "",
+             note: ""
          };
      }
      render(){
          return(
+             // The first view contains the header and the scroll View
+             // The first inner view contains the header and is orange
+             // the second inner view contains the scroll view and is
+             // tiffany blue
              <View>
                 <View style = {Style.header}>
                     <Text style = {Style.headerItem}>New Notification</Text>
@@ -94,7 +98,7 @@
 
      onDateChange = (date) => {
          this.setState({
-             date: date
+             date: date.string
          });
      }
 
@@ -103,8 +107,9 @@
              alert("Please enter a name for the notification");
          }
          else {
+             let numNoti = realm.objects('Noti').length + 1
              realm.write(() => {
-                 let noti = realm.create('Noti', {title: this.state.name, message: this.state.note, date: this.state.date});
+                 let noti = realm.create('Noti', {title: this.state.name, message: this.state.note, date: this.state.date, serial: numNoti});
              })
              alert('it worked!');
          }
