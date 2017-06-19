@@ -51,13 +51,18 @@ var Style = StyleSheet.create({
 
     tileText:{
         fontSize: 20,
-        color:'#0abab5'
+        color:'#0abab5',
+        fontWeight: 'bold'
     },
 
     notiTileView:{
         alignItems:'center',
         flexDirection:'column',
         paddingTop: 20
+    },
+
+    notiPopup:{
+        backgroundColor: '#EBD038'
     }
 
 });

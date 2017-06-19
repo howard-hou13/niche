@@ -9,7 +9,8 @@
      ScrollView,
      Text,
      Button,
-     TouchableHighlight
+     TouchableHighlight,
+     Modal
  } from 'react-native';
  import Style from './HomeStyle';
  import realm from './NotiModel';
@@ -22,9 +23,26 @@
  } = Dimensions.get('window');
 
  export default class Add extends Component{
+     constructor(props){
+         super(props);
+         this.state = {
+            notiPopupVisible: false
+         };
+     }
      render(){
          return(
              <View>
+                 <Modal
+                 animationType={"slide"}
+                 transparent={true}
+                 visible={this.state.notiPopupVisible}
+                 onRequestClose={() => {setNotiPopupVisible(false)}}
+                 >
+                    <View style = {[Style.notiPopup, minHeight = {height}]}>
+                    
+                    </View>
+                 </Modal>
+
                 <View style = {Style.header}>
                     <Text style = {Style.headerItem}>My Noti</Text>
                 </View>
@@ -58,7 +76,7 @@
              <View style = {Style.tileRow}>
                  <TouchableHighlight
                  style = {Style.notiTileTouchableHighlight}
-                 onPress = {()=>alert('a')}
+                 onPress = {()=>{this.setNotiPopupVisible(true)}}
                  key = {notiResults[index].serial}>
                     <View style={Style.notiTileView}>
                         <Text style = {Style.tileText}>{notiResults[index].title}</Text>
@@ -69,7 +87,7 @@
 
                  <TouchableHighlight
                  style = {Style.notiTileTouchableHighlight}
-                 onPress = {()=>alert('a')}
+                 onPress = {()=>{this.setNotiPopupVisible(true)}}
                  key = {notiResults[++index].serial}>
                     <View style={Style.notiTileView}>
                         <Text style = {Style.tileText}>{notiResults[index].title}</Text>
@@ -98,4 +116,8 @@
          }
          return notiTiles;
      }
+
+     setNotiPopupVisible(visible) {
+         this.setState({notiPopupVisible: visible});
+    }
  }
