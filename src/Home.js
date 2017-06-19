@@ -16,12 +16,6 @@
  import realm from './NotiModel';
  import Moment from 'moment';
 
- var Dimensions = require('Dimensions');
- var {
-     width,
-     height
- } = Dimensions.get('window');
-
  export default class Add extends Component{
      constructor(props){
          super(props);
@@ -38,8 +32,22 @@
                  visible={this.state.notiPopupVisible}
                  onRequestClose={() => {setNotiPopupVisible(false)}}
                  >
-                    <View style = {[Style.notiPopup, minHeight = {height}]}>
-                    
+                    <View style = {Style.notiPopup}>
+                        <TouchableHighlight
+                        style = {Style.popupButton}
+                        onPress = {()=>{this.setNotiPopupVisible(false)}}>
+                            <Text style = {Style.popupText}>
+                                Close
+                            </Text>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight
+                        style = {Style.popupButton}
+                        onPress = {()=>{this.setNotiPopupVisible(false)}}>
+                            <Text style = {Style.popupTextDelete}>
+                                Delete
+                            </Text>
+                        </TouchableHighlight>
                     </View>
                  </Modal>
 
@@ -50,7 +58,7 @@
                 <ScrollView
                 automaticallyAdjustContentInsets={false}
                 contentInset={{bottom:130}}>
-                    <View style = {[Style.rootContainer, {minHeight: height}]}>
+                    <View style = {Style.rootContainer}>
                         <View style = {Style.notiContainer}>
                             {this._renderNotiTiles()}
                         </View>
@@ -104,11 +112,12 @@
                  <View style = {Style.tileRow}>
                      <TouchableHighlight
                      style = {Style.notiTileTouchableHighlight}
-                     onPress = {()=>alert('a')}
+                     onPress = {()=>{this.setNotiPopupVisible(true)}}
                      key = {notiResults[notiResults.length-1].serial}>
                         <View style={Style.notiTileView}>
                             <Text style = {Style.tileText}>{notiResults[notiResults.length-1].title}</Text>
-
+                            <Text style = {Style.tileText}>{Moment(notiResults[index].date).format('D MMMM')}</Text>
+                            <Text style = {Style.tileText}>{Moment(notiResults[index].date).format('h:mm a')}</Text>
                         </View>
                      </TouchableHighlight>
                  </View>
