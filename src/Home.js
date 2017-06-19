@@ -13,6 +13,8 @@
  } from 'react-native';
  import Style from './HomeStyle';
  import realm from './NotiModel';
+ import Moment from 'moment';
+
  var Dimensions = require('Dimensions');
  var {
      width,
@@ -40,6 +42,7 @@
          );
      }
      _renderNotiTiles(){
+         Moment.locale('en');
 
          let notiResults = realm.objects('Noti');
 
@@ -59,7 +62,8 @@
                  key = {notiResults[index].serial}>
                     <View style={Style.notiTileView}>
                         <Text style = {Style.tileText}>{notiResults[index].title}</Text>
-
+                        <Text style = {Style.tileText}>{Moment(notiResults[index].date).format('D MMMM')}</Text>
+                        <Text style = {Style.tileText}>{Moment(notiResults[index].date).format('h:mm a')}</Text>
                     </View>
                  </TouchableHighlight>
 
@@ -69,7 +73,8 @@
                  key = {notiResults[++index].serial}>
                     <View style={Style.notiTileView}>
                         <Text style = {Style.tileText}>{notiResults[index].title}</Text>
-
+                        <Text style = {Style.tileText}>{Moment(notiResults[index].date).format('D MMMM')}</Text>
+                        <Text style = {Style.tileText}>{Moment(notiResults[index].date).format('h:mm a')}</Text>
                     </View>
                  </TouchableHighlight>
              </View>
@@ -81,7 +86,7 @@
                  <View style = {Style.tileRow}>
                      <TouchableHighlight
                      style = {Style.notiTileTouchableHighlight}
-                     onPress = {alert('a')}
+                     onPress = {()=>alert('a')}
                      key = {notiResults[notiResults.length-1].serial}>
                         <View style={Style.notiTileView}>
                             <Text style = {Style.tileText}>{notiResults[notiResults.length-1].title}</Text>

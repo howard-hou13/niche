@@ -51,7 +51,7 @@ var Style = StyleSheet.create({
 
     tileText:{
         fontSize: 20,
-        color:'black'
+        color:'#0abab5'
     },
 
     notiTileView:{
