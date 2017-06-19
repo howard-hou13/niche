@@ -98,7 +98,7 @@
 
      onDateChange = (date) => {
          this.setState({
-             date: date.string
+             date: date
          });
      }
 
@@ -107,6 +107,7 @@
              alert("Please enter a name for the notification");
          }
          else {
+             alert(this.state.date);
              let numNoti = realm.objects('Noti').length + 1
              realm.write(() => {
                  let noti = realm.create('Noti', {title: this.state.name, message: this.state.note, date: this.state.date, serial: numNoti});
