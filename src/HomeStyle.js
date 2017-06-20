@@ -88,14 +88,20 @@ var Style = StyleSheet.create({
     popupText:{
         fontSize:25,
         color:'#0abab5',
-        paddingTop: 10
+        paddingTop: 10,
+        fontWeight: 'bold'
     },
 
-    popupTextDelete:{
+    popupButtonDelete:{
         fontSize:25,
         color:'#EB0F0F',
         paddingTop: 10,
         fontWeight:'bold'
+    },
+
+    popupField:{
+        paddingTop:10,
+        paddingBottom: 10
     }
 
 });

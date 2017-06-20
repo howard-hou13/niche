@@ -20,7 +20,8 @@
      constructor(props){
          super(props);
          this.state = {
-            notiPopupVisible: false
+            notiPopupVisible: false,
+            notiTitle: ""
          };
      }
      render(){
@@ -33,9 +34,12 @@
                  onRequestClose={() => {setNotiPopupVisible(false)}}
                  >
                     <View style = {Style.notiPopup}>
+
+                        {this.getNotiData()}
+
                         <TouchableHighlight
                         style = {Style.popupButton}
-                        onPress = {()=>{this.setNotiPopupVisible(false)}}>
+                        onPress = {()=>{this.setNotiPopupVisible(false, "")}}>
                             <Text style = {Style.popupText}>
                                 Close
                             </Text>
@@ -43,8 +47,8 @@
 
                         <TouchableHighlight
                         style = {Style.popupButton}
-                        onPress = {()=>{this.setNotiPopupVisible(false)}}>
-                            <Text style = {Style.popupTextDelete}>
+                        onPress = {()=>{this.setNotiPopupVisible(false, "")}}>
+                            <Text style = {Style.popupButtonDelete}>
                                 Delete
                             </Text>
                         </TouchableHighlight>
@@ -67,6 +71,34 @@
              </View>
          );
      }
+    getNotiData(){
+        let requestedNoti = realm.objects('Noti').filtered('title == $0', this.state.notiTitle);
+        let notiData = [];
+        if (requestedNoti.length>0){
+            notiData.push(
+                <View style = {Style.popupField}>
+                    <Text style = {Style.popupText}>{requestedNoti[0].title}</Text>
+                </View>
+            );
+
+            notiData.push(
+                <View style = {Style.popupField}>
+                    <Text style = {Style.popupText}>{Moment(requestedNoti.date).format('D MMMM')}</Text>
+                    <Text style = {Style.popupText}>{Moment(requestedNoti.date).format('h:mm a')}</Text>
+                </View>
+            );
+
+            notiData.push(
+                <View style = {Style.popupField}>
+                    <Text style = {Style.popupText}>{requestedNoti[0].message}</Text>
+                </View>
+            );
+        }
+
+        return notiData;
+
+    }
+
      _renderNotiTiles(){
          Moment.locale('en');
 
@@ -79,12 +111,13 @@
          }else{
              max = notiResults.length-1
          }
+
          for (index = 0; index < max; index++){
              notiTiles.push(
              <View style = {Style.tileRow}>
                  <TouchableHighlight
                  style = {Style.notiTileTouchableHighlight}
-                 onPress = {()=>{this.setNotiPopupVisible(true)}}
+                 onPress = {()=>{this.setNotiPopupVisible(true, notiResults[index].title)}}
                  key = {notiResults[index].serial}>
                     <View style={Style.notiTileView}>
                         <Text style = {Style.tileText}>{notiResults[index].title}</Text>
@@ -95,7 +128,7 @@
 
                  <TouchableHighlight
                  style = {Style.notiTileTouchableHighlight}
-                 onPress = {()=>{this.setNotiPopupVisible(true)}}
+                 onPress = {()=>{this.setNotiPopupVisible(true, notiResults[index].title)}}
                  key = {notiResults[++index].serial}>
                     <View style={Style.notiTileView}>
                         <Text style = {Style.tileText}>{notiResults[index].title}</Text>
@@ -112,7 +145,7 @@
                  <View style = {Style.tileRow}>
                      <TouchableHighlight
                      style = {Style.notiTileTouchableHighlight}
-                     onPress = {()=>{this.setNotiPopupVisible(true)}}
+                     onPress = {()=>{this.setNotiPopupVisible(true, notiResults[index].title)}}
                      key = {notiResults[notiResults.length-1].serial}>
                         <View style={Style.notiTileView}>
                             <Text style = {Style.tileText}>{notiResults[notiResults.length-1].title}</Text>
@@ -126,7 +159,10 @@
          return notiTiles;
      }
 
-     setNotiPopupVisible(visible) {
-         this.setState({notiPopupVisible: visible});
+     setNotiPopupVisible(visible, notiTitle) {
+         this.setState({
+             notiPopupVisible: visible,
+             notiTitle: notiTitle
+         });
     }
  }
