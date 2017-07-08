@@ -107,12 +107,28 @@
              alert("Please enter a name for the notification");
          }
          else {
-             alert(this.state.date);
-             let numNoti = realm.objects('Noti').length + 1
+             let notiResults = realm.objects('Noti');
+             var newSerial = 0;
+
+             for (noti in notiResults){
+                 if (noti.id>=newSerial){
+                     newSerial = noti.id
+                 }
+             }
+             newSerial++;
+
              realm.write(() => {
-                 let noti = realm.create('Noti', {title: this.state.name, message: this.state.note, date: this.state.date, serial: numNoti});
+                 let noti = realm.create('Noti',  {title: this.state.name,
+                     message: this.state.note, date:
+                     this.state.date, id: newSerial});
              })
-             alert('it worked!');
+
+             this.setState({
+                 name: "",
+                 date: new Date(),
+                 timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
+                 note: ""
+             });
          }
      }
  }
