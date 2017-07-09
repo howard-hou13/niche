@@ -4,15 +4,17 @@ class Noti {}
 
 Noti.schema = {
     name: 'Noti',
+    primaryKey: 'id',
     properties: {
-        title: {type: 'string', optional: false},
+        id: 'int',
+        title: 'string',
         message: {type: 'string', optional: true},
-        date: 'date',
-        id: 'int'
+        date: 'date'
     }
 };
 
 let realm = new Realm({
     schema: [Noti]
 });
-module.exports = realm;
+
+export default realm;
