@@ -10,7 +10,9 @@
      TextInput,
      DatePickerIOS,
      Button,
-     ScrollView
+     ScrollView,
+     Modal,
+     TouchableHighlight
  } from 'react-native';
  import { RadioButtons } from 'react-native-radio-buttons'
  import Style from './AddStyle';
@@ -23,16 +25,38 @@
              name: "",
              date: new Date(),
              timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
-             note: ""
+             note: "",
+             popupVisible: false
          };
      }
      render(){
          return(
-             // The first view contains the header and the scroll View
-             // The first inner view contains the header and is orange
-             // the second inner view contains the scroll view and is
-             // tiffany blue
              <View>
+                <Modal
+                animationType={"slide"}
+                transparent={true}
+                visible={this.state.popupVisible}
+                onRequestClose={() => {setPopupVisible(false)}}>
+                    <View style = {Style.notiPopup}>
+                        <Text style = {Style.popupText}>Saved</Text>
+                        <TouchableHighlight
+                        style = {Style.popupButton}
+                        onPress = {()=>{this.setPopupVisible(false)}}>
+                            <Text style = {Style.popupText}>
+                                Create Another One
+                            </Text>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight
+                        style = {Style.popupButton}
+                        onPress = {()=>{this.setPopupVisible(false)}}>
+                            <Text style = {Style.popupText}>
+                                Close
+                            </Text>
+                        </TouchableHighlight>
+                    </View>
+                </Modal>
+
                 <View style = {Style.header}>
                     <Text style = {Style.headerItem}>New Notification</Text>
                 </View>
@@ -102,6 +126,12 @@
          });
      }
 
+     setPopupVisible(visibility){
+         this.setState({
+            popupVisible: visibility
+        });
+     }
+
      onAddPress = () =>{
          if (this.state.name === "") {
              alert("Please enter a name for the notification");
@@ -127,8 +157,10 @@
                  name: "",
                  date: new Date(),
                  timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
-                 note: ""
+                 note: "",
+                 popupVisible: true
              });
          }
+
      }
  }

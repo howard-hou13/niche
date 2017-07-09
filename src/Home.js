@@ -114,8 +114,6 @@
          var currIndex = -1;
          var index =0;
 
-         //Change to while loop?
-
          while (index<max){
              let firstNoti = notiResults[index++];
              let secondNoti = notiResults[index++];
