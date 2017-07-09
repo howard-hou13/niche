@@ -158,8 +158,9 @@
                  date: new Date(),
                  timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
                  note: "",
-                 popupVisible: true
+
              });
+             this.setPopupVisible(true);
          }
 
      }
