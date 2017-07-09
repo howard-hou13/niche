@@ -4,6 +4,11 @@
  */
 
 import {StyleSheet} from 'react-native';
+var Dimensions = require('Dimensions');
+var {
+   width,
+   height
+} = Dimensions.get('window');
 
 var Style = StyleSheet.create({
     rootContainer:{
@@ -44,7 +49,31 @@ var Style = StyleSheet.create({
         color: 'white',
         alignItems: 'center',
         fontWeight: 'bold'
-    }
+    },
+
+    notiPopup:{
+        backgroundColor: '#EBD038',
+        alignItems: 'center',
+        padding: 50,
+        minHeight: height
+    },
+
+    popupButton:{
+        backgroundColor: 'white',
+        alignItems: 'center',
+        height: 50,
+        width: width -100,
+        borderRadius: 5,
+        marginTop: 10,
+        marginBottom: 10,
+    },
+
+    popupText:{
+        fontSize:25,
+        color:'#0abab5',
+        paddingTop: 10,
+        fontWeight: 'bold'
+    },
 
 });
 

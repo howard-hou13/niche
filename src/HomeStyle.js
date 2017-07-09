@@ -5,12 +5,19 @@
 
 import {StyleSheet} from 'react-native';
 
+ var Dimensions = require('Dimensions');
+var {
+    width,
+    height
+} = Dimensions.get('window');
+
 var Style = StyleSheet.create({
     rootContainer:{
         backgroundColor: '#0abab5',
         flex:1,
         paddingBottom: 20,
-        paddingTop: 10
+        paddingTop: 10,
+        minHeight: height
     },
 
     header:{
@@ -51,13 +58,54 @@ var Style = StyleSheet.create({
 
     tileText:{
         fontSize: 20,
-        color:'#0abab5'
+        color:'#0abab5',
+        fontWeight: 'bold'
     },
 
     notiTileView:{
         alignItems:'center',
         flexDirection:'column',
         paddingTop: 20
+    },
+
+    notiPopup:{
+        backgroundColor: '#EBD038',
+        alignItems: 'center',
+        padding: 50,
+        minHeight: height
+    },
+
+    popupButton:{
+        backgroundColor: 'white',
+        alignItems: 'center',
+        height: 50,
+        width: width -100,
+        borderRadius: 5,
+        marginTop: 10,
+        marginBottom: 10,
+    },
+
+    popupText:{
+        fontSize:25,
+        color:'#0abab5',
+        paddingTop: 10,
+        fontWeight: 'bold'
+    },
+
+    popupButtonDelete:{
+        fontSize:25,
+        color:'#EB0F0F',
+        paddingTop: 10,
+        fontWeight:'bold'
+    },
+
+    popupField:{
+        paddingTop:10,
+        paddingBottom: 10
+    },
+
+    addButton:{
+        
     }
 
 });
