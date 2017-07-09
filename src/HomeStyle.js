@@ -102,6 +102,10 @@ var Style = StyleSheet.create({
     popupField:{
         paddingTop:10,
         paddingBottom: 10
+    },
+
+    addButton:{
+        
     }
 
 });
